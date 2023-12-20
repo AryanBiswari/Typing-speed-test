@@ -84,9 +84,14 @@ function initTyping() {
   } else {
     clearInterval(timer);
     inpField.value = "";
+    showModal();
   }
 }
-
+function showModal() {
+  // Use Bootstrap's modal functions to show the modal
+  const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+  myModal.show();
+}
 function initTimer() {
   if (timeLeft > 0) {
     timeLeft--;

@@ -127,6 +127,12 @@ body{
 }
 .result-details li p{
   font-size: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .result-details li span{
   display: block;
