@@ -4,8 +4,7 @@ const typingText = document.querySelector(".typing-text p"),
   timeTag = document.querySelector(".time span b"),
   mistakeTag = document.querySelector(".mistake span"),
   wpmTag = document.querySelector(".wpm span"),
-  cpmTag = document.querySelector(".cpm span"),
-  score = document.getElementById("scores");
+  cpmTag = document.querySelector(".cpm span");
 
 let timer,
   maxTime = 60,
@@ -82,7 +81,6 @@ function initTyping() {
     wpmTag.innerText = wpm;
     mistakeTag.innerText = mistakes;
     cpmTag.innerText = charIndex - mistakes;
-    score.innerText = `Your score is ${wpm}`;
   } else {
     clearInterval(timer);
     inpField.value = "";
@@ -90,8 +88,29 @@ function initTyping() {
   }
 }
 function showModal() {
+  const currentScore = parseInt(wpmTag.innerText, 10);
+  const previousScore = localStorage.getItem('typingGameScore') || 0;
+
+  // Store the current score in local storage
+  localStorage.setItem('typingGameScore', currentScore);
+
   // Use Bootstrap's modal functions to show the modal
   const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+  const modalBody = document.querySelector('.modal-body');
+
+  // Display a message based on the comparison with the previous score
+  if (currentScore > previousScore) {
+    modalBody.innerHTML = `
+      <p class="scores">Congratulations! Your new score is ${currentScore}. You're improving!</p>
+      <p>Previous best score was ${previousScore}.</p>
+    `;
+  } else {
+    modalBody.innerHTML = `
+      <p class="scores">You need to improve. Your score is ${currentScore}.</p>
+      <p>Your previous best score was ${previousScore}.</p>
+    `;
+  }
+
   myModal.show();
 }
 function initTimer() {
