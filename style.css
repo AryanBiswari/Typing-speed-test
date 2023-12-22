@@ -150,6 +150,9 @@ li:not(:first-child) span{
   height: 14rem;
   border-radius:10px;
 }
+#scores{
+  font-weight: bolder;
+}
 @media  (max-width: 1440px) {
   .imgStyle{
     width: 25vw;
