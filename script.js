@@ -4,7 +4,8 @@ const typingText = document.querySelector(".typing-text p"),
   timeTag = document.querySelector(".time span b"),
   mistakeTag = document.querySelector(".mistake span"),
   wpmTag = document.querySelector(".wpm span"),
-  cpmTag = document.querySelector(".cpm span");
+  cpmTag = document.querySelector(".cpm span"),
+  score = document.getElementById("scores");
 
 let timer,
   maxTime = 60,
@@ -81,6 +82,7 @@ function initTyping() {
     wpmTag.innerText = wpm;
     mistakeTag.innerText = mistakes;
     cpmTag.innerText = charIndex - mistakes;
+    score.innerText = `Your score is ${wpm}`;
   } else {
     clearInterval(timer);
     inpField.value = "";
