@@ -92,8 +92,9 @@ function showModal() {
   const previousScore = localStorage.getItem('typingGameScore') || 0;
 
   // Store the current score in local storage
-  localStorage.setItem('typingGameScore', currentScore);
-
+  if(currentScore > previousScore){
+    localStorage.setItem('typingGameScore', currentScore);
+  }
   // Use Bootstrap's modal functions to show the modal
   const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
   const modalBody = document.querySelector('.modal-body');
@@ -101,11 +102,17 @@ function showModal() {
   // Display a message based on the comparison with the previous score
   if (currentScore > previousScore) {
     modalBody.innerHTML = `
+    <div class="gif-center">
+            <img class="img-fluid" src="images/victory.gif" alt="gif">
+          </div>
       <p class="scores">Congratulations! Your new score is ${currentScore}. You're improving!</p>
       <p>Previous best score was ${previousScore}.</p>
     `;
   } else {
     modalBody.innerHTML = `
+    <div class="gif-center">
+            <img class="img-fluid" src="images/lost.gif" alt="gif">
+          </div>
       <p class="scores">You need to improve. Your score is ${currentScore}.</p>
       <p>Your previous best score was ${previousScore}.</p>
     `;

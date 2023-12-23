@@ -153,6 +153,14 @@ li:not(:first-child) span{
 .scores{
   font-weight: bolder;
 }
+.gif-center{
+  display: flex;
+  justify-content: center;
+}
+.img-fluid{
+  width:5rem;
+  height:5rem;
+}
 @media  (max-width: 1440px) {
   .imgStyle{
     width: 25vw;
